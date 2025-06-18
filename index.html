@@ -95,7 +95,7 @@ function startGame(selectedMode) {
   gameInterval = setInterval(gameLoop, 1000);
   smoothInterval = setInterval(updateAll, 50);
   startSelfExplosionLoop();
-  if (mode === "advanced") startBigAddPrepare();
+  startBigAddPrepare();
 }
 
 function gameLoop() {
