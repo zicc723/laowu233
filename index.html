@@ -103,7 +103,7 @@ function gameLoop() {
     if (mode !== "advanced") {
 
     }
-    const hpLoss = (health > 25 ? (mode === "dps_focus" ? 3 : 2) : (health > 20 ? 1 : 1));
+    const hpLoss = (health > 25 ? (mode === "advanced" ? 3 : 2) : (health > 20 ? 1 : 1));
     health = Math.max(health - hpLoss, 0);
     document.getElementById("stop-dps").style.display = (health <= 25) ? 'block' : 'none';
 
