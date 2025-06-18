@@ -28,8 +28,8 @@
   <h1>Mutated Construct Simulator</h1>
 
   <div id="mode-selection">
-    <button class="mode-btn" onclick="startGame('dps_focus')">DPS集火版</button>
-    <button class="mode-btn" onclick="startGame('dps_smooth')">DPS平缓版</button>
+    <!-- <button class="mode-btn" onclick="startGame('dps_focus')">DPS集火版</button>
+    <button class="mode-btn" onclick="startGame('dps_smooth')">DPS平缓版</button> -->
     <button class="mode-btn" onclick="startGame('advanced')">高阶特训版</button>
   </div>
 
@@ -101,10 +101,12 @@ function startGame(selectedMode) {
 function gameLoop() {
   if (!selfExplosionCasting && !bigAddCasting) {
     if (mode !== "advanced") {
-      const hpLoss = (health > 25 ? (mode === "dps_focus" ? 3 : 2) : (health > 20 ? 1 : 1));
-      health = Math.max(health - hpLoss, 0);
-      document.getElementById("stop-dps").style.display = (health <= 25) ? 'block' : 'none';
+
     }
+    const hpLoss = (health > 25 ? (mode === "dps_focus" ? 3 : 2) : (health > 20 ? 1 : 1));
+    health = Math.max(health - hpLoss, 0);
+    document.getElementById("stop-dps").style.display = (health <= 25) ? 'block' : 'none';
+
     energy = Math.max(energy - 2, 0);
   }
   if (vulnTimer > 0) {
