@@ -139,8 +139,11 @@ function updateAll() {
 function log(msg) { document.getElementById("log").innerText = msg; }
 
 function gameOver(reason) {
-  clearInterval(gameInterval); clearInterval(smoothInterval);
-  clearInterval(selfExplosionInterval); clearInterval(bigAddPrepareInterval); clearInterval(bigAddCastInterval);
+  clearInterval(gameInterval); 
+  clearInterval(smoothInterval);
+  clearInterval(selfExplosionInterval); 
+  clearInterval(bigAddPrepareInterval); 
+  clearInterval(bigAddCastInterval);
   clearInterval(selfExplosionCastInterval);
   log(reason);
   document.getElementById("restart-btn").style.display = 'inline-block';
