@@ -45,6 +45,7 @@
     <div class="bar-container" style="height: 20px;"><div id="explosion-bar"></div></div>
 
     <div id="big-add-section" style="display:none;">
+      <div>大怪爆炸CD <span id="bidaddcdremain"></span></div>
       <div>大怪爆炸读条</div>
       <div class="bar-container" style="height: 20px;"><div id="big-add-bar"></div></div>
       <div id="big-add-prepare"></div>
@@ -87,7 +88,8 @@ function startGame(selectedMode) {
   if(mode === "advanced") document.getElementById("big-add-section").style.display = 'block';
   else document.getElementById("big-add-section").style.display = 'none';
 
-  health = 100; energy = 100; skill1CD = 0; skill2CD = 0; vulnStack = 0; vulnTimer = 0; nextBigAdd = 35;
+  health = 100; energy = 100; skill1CD = 0; skill2CD = 0; vulnStack = 0; vulnTimer = 0; 
+  nextBigAdd = 35 - this.getRndInteger(2,20);
   updateAll();
   log("游戏开始！");
   gameInterval = setInterval(gameLoop, 1000);
@@ -115,6 +117,7 @@ function gameLoop() {
 }
 
 function updateAll() {
+  document.getElementById("skill4").style.display = 'inline-block';
   document.getElementById("health-bar").style.width = health + "%";
   document.getElementById("health-bar").innerText = Math.floor(health) + "%";
   document.getElementById("energy-bar").style.width = energy + "%";
@@ -123,7 +126,9 @@ function updateAll() {
   document.getElementById("skill2-cd").style.background = `conic-gradient(rgba(0,0,0,0.5) ${skill2CD/6*360}deg, transparent 0deg)`;
   document.getElementById("skill1").classList.toggle("disabled", skill1CD > 0);
   document.getElementById("skill2").classList.toggle("disabled", skill2CD > 0);
+  document.getElementById("skill4").style.display = 'inline-block';
   document.getElementById("vuln-buff").innerText = `易伤: ${vulnStack*10}% (剩余时间: ${vulnTimer}s)`;
+  document.getElementById("bidaddcdremain").innerText = ` (${nextBigAdd}s)`;
 }
 
 function log(msg) { document.getElementById("log").innerText = msg; }
@@ -134,6 +139,7 @@ function gameOver(reason) {
   clearInterval(selfExplosionCastInterval);
   log(reason);
   document.getElementById("restart-btn").style.display = 'inline-block';
+  document.getElementById("skill4").style.display = 'none';
 }
 
 function resetGame() {
