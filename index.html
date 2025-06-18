@@ -89,7 +89,7 @@ function startGame(selectedMode) {
   else document.getElementById("big-add-section").style.display = 'none';
 
   health = 100; energy = 100; skill1CD = 0; skill2CD = 0; vulnStack = 0; vulnTimer = 0; 
-  nextBigAdd = 35 - this.getRndInteger(2,20);
+  nextBigAdd = 35 - getRndInteger(2,20);
   updateAll();
   log("游戏开始！");
   gameInterval = setInterval(gameLoop, 1000);
@@ -114,6 +114,9 @@ function gameLoop() {
   if (health <= 0 || energy <= 0) gameOver("Game Over! 你已死亡！");
   if (skill1CD > 0) skill1CD--;
   if (skill2CD > 0) skill2CD--;
+}
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
 function updateAll() {
