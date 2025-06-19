@@ -193,6 +193,7 @@ function startBigAdd() {
   bigAddCastInterval = setInterval(() => {
     bigAddTimer--;
     document.getElementById("big-add-bar").style.width = (100 - bigAddTimer*5) + "%";
+    console.log(bigAddTimer);
     if (bigAddTimer <= 0) {
       clearInterval(bigAddCastInterval);
       if (bigAddCasting) gameOver("Game Over! 大怪爆炸引爆！");
